@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dj.boot.mapper.MoneyProjectMapper">
+
+
+    <!--根据身份证查询    资产表-->
+    <select id="findMoneyByIdCard" resultType="com.dj.boot.domain.money.Money">
+        SELECT * FROM p2p_money WHERE id_card = #{idCard}
+    </select>
+    <!--根据身份证 查询 Account  支付密码-->
+    <select id="findAccountByIdCard" resultType="com.dj.boot.domain.account.entry.Account">
+        SELECT * FROM p2p_account WHERE id_card = #{idCard}
+    </select>
+
+
+    <!--修改余额  冻结金额-->
+    <update id="updateMoneyByIdCard">
+        UPDATE p2p_money SET balance_money = #{balanceMoney}, unuse_money = #{unuseMoney}, huan_money = #{huanMoney}, shou_money = #{shouMoney} where id_card = #{idCard}
+    </update>
+    <!-- 根据id查询user-->
+    <select id="findUserById" resultType="com.dj.boot.domain.user.entry.User">
+        SELECT * FROM p2p_user WHERE id = #{id}
+    </select>
+</mapper>
